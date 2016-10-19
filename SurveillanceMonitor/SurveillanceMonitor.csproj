@@ -98,6 +98,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MonitorSettings.Template.xml" />
     <Content Include="MonitorSettings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
