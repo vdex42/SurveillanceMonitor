@@ -1,7 +1,4 @@
-﻿using System;
-using Serilog;
-using Serilog.Core;
-using SurveillanceMonitor.Infrastructure;
+﻿using SurveillanceMonitor.Infrastructure;
 using TinyIoC;
 using Topshelf;
 

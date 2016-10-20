@@ -3,25 +3,28 @@ using System.Threading;
 using System.Threading.Tasks;
 using Serilog;
 using Serilog.Events;
+using SurveillanceMonitor.Infrastructure.Config;
 
 namespace SurveillanceMonitor.Services
 {
     public class CameraMonitor
     {
         private readonly ICameraService _cameraService;
-        private readonly Infrastructure.Config.SurveillanceMonitor.SurveillanceMonitorCamera _cameraSettings;
-        private readonly Infrastructure.Config.SurveillanceMonitor _settings;
+        private readonly SurveillanceMonitorConfig.SurveillanceMonitorCamera _cameraSettings;
+        private readonly SurveillanceMonitorConfig _settings;
+        private readonly IAlarmHandlers _alarmHandlers;
         private readonly ILogger _logger;
         private int _backOffSeconds = 1;
 
         public CameraMonitor(
-            Infrastructure.Config.SurveillanceMonitor.SurveillanceMonitorCamera cameraSettings,
-            Infrastructure.Config.SurveillanceMonitor settings, ILogger logger)
+            SurveillanceMonitorConfig.SurveillanceMonitorCamera cameraSettings,
+            SurveillanceMonitorConfig settings, ILogger logger, IAlarmHandlers alarmHandlers)
         {
             _cameraService = new CameraService(cameraSettings);
             _cameraSettings = cameraSettings;
             _settings = settings;
             _logger = logger;
+            _alarmHandlers = alarmHandlers;
         }
 
         public void Start(CancellationToken cancellationToken)
@@ -37,7 +40,8 @@ namespace SurveillanceMonitor.Services
                              {                                 
                                  var webServer = new MiniWebServer(_logger, new MiniSocketService());
                                  webServer.PageReceivedEvent += (sender, page) => {
-                                     _logger.Write(LogEventLevel.Warning, $"ALARM {page}");
+                                     _alarmHandlers.AlarmActivated(_cameraSettings);
+                                     //_logger.Write(LogEventLevel.Warning, $"ALARM {page}");
                                  };
                                  webServer.Bind(8080);
 

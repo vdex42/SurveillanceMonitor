@@ -6,12 +6,9 @@ namespace SurveillanceMonitor.Services
 {
     public class CameraService : ICameraService
     {
-        private readonly Infrastructure.Config.SurveillanceMonitor.SurveillanceMonitorCamera _cameraSettings;
-        //private readonly Uri _cameraHttpUrl ;
-        //private readonly string _cameraUserName;
-        //private readonly string _cameraPassword;
+        private readonly Infrastructure.Config.SurveillanceMonitorConfig.SurveillanceMonitorCamera _cameraSettings;
 
-        public CameraService(Infrastructure.Config.SurveillanceMonitor.SurveillanceMonitorCamera cameraSettings)
+        public CameraService(Infrastructure.Config.SurveillanceMonitorConfig.SurveillanceMonitorCamera cameraSettings)
         {
             _cameraSettings = cameraSettings;
         }

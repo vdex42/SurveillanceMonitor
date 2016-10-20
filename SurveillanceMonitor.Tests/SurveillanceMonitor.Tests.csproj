@@ -93,12 +93,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MiniHttpStreamReaderTests.cs" />
-    <Compile Include="Services\TokenReaderTests.cs" />
     <Compile Include="Services\VideoDumperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SurveillanceMonitor\SurveillanceMonitor.csproj">

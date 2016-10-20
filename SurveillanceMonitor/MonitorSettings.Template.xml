@@ -5,11 +5,16 @@
   CallbackPort="8080">
   <cameras>
     <camera
-      VideoDumpDirectory=".\videos\"
       RtspSource="rtsp://admin:password@192.168.0.103:554/ISAPI/Streaming/channels/101"
       CameraHttpUrl="http://192.168.0.103:80"
       CameraUserName="admin"
       CameraPassword="password">
     </camera>
   </cameras>
+  <alarmActions>
+    <alarmAction Type="VideoDumper">
+      <setting Key="videoDumpDirectory" Value=".\videos\" ></setting>
+      <setting Key="recordForSeconds" Value="30" ></setting>
+    </alarmAction>
+  </alarmActions>
 </surveillanceMonitor>

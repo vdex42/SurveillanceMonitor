@@ -76,26 +76,32 @@
     <Compile Include="ExtensionMethods\ByteExtensions.cs" />
     <Compile Include="ExtensionMethods\DateTimeExtensions.cs" />
     <Compile Include="Infrastructure\Config\SettingLoader.cs" />
-    <Compile Include="Infrastructure\Config\SurveillanceMonitor.cs" />
+    <Compile Include="Infrastructure\Config\SurveillanceMonitorConfig.cs" />
     <Compile Include="Infrastructure\IocSetup.cs" />
     <Compile Include="Infrastructure\Monitor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AlarmHandlers.cs" />
+    <Compile Include="Services\AlarmHandler\AlarmLogger.cs" />
     <Compile Include="Services\CameraMonitor.cs" />
     <Compile Include="Services\CameraService.cs" />
+    <Compile Include="Services\IAlarmHandler.cs" />
+    <Compile Include="Services\IAlarmHandlers.cs" />
     <Compile Include="Services\ICameraService.cs" />
     <Compile Include="Services\IMiniSocketService.cs" />
-    <Compile Include="Services\IVideoDumper.cs" />
     <Compile Include="Services\MiniHttpStreamReader.cs" />
     <Compile Include="Services\MiniWebServer.cs" />
     <Compile Include="Services\MiniSocketService.cs" />
-    <Compile Include="Services\TokenReader.cs" />
-    <Compile Include="Services\VideoDumper.cs" />
+    <Compile Include="Services\AlarmHandler\VideoDumper.cs" />
     <Compile Include="TinyIoC.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MonitorSettings.Template.xml" />
