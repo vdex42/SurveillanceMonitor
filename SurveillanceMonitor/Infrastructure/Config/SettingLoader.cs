@@ -8,7 +8,9 @@ namespace SurveillanceMonitor.Infrastructure.Config
         public static SurveillanceMonitorConfig Load()
         {
             var mySerializer = new XmlSerializer(typeof(SurveillanceMonitorConfig));
-            using (var fileStream = new FileStream("./MonitorSettings.xml", FileMode.Open))
+            string runningLocation = new FileInfo(System.Reflection.Assembly.GetEntryAssembly().Location).DirectoryName;
+            using (var fileStream = new FileStream(Path.Combine(runningLocation,
+                "./MonitorSettings.xml"), FileMode.Open))
             {
                 var settings = (SurveillanceMonitorConfig)mySerializer.Deserialize(fileStream);
                 for (int i = 0; i < settings.Cameras.Length; i++)

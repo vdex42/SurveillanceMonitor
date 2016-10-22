@@ -268,3 +268,4 @@ __pycache__/
 # tools/
 
 MonitorSettings.xml
+SurveillanceMonitor/Output

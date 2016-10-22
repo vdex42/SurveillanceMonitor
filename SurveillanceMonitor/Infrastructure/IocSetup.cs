@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using Serilog;
 using SurveillanceMonitor.Infrastructure.Config;
@@ -11,8 +12,7 @@ namespace SurveillanceMonitor.Infrastructure
     public static class IocSetup
     {
         public static void Setup()
-        {
-            TinyIoCContainer.Current.RegisterLogger();
+        {            
             TinyIoCContainer.Current.Register<Monitor>().AsSingleton();            
             TinyIoCContainer.Current.RegisterSettings();
             TinyIoCContainer.Current.RegisterLogger();
@@ -28,11 +28,11 @@ namespace SurveillanceMonitor.Infrastructure
 
         public static void RegisterLogger(this TinyIoCContainer current)
         {
-            Log.Logger = new LoggerConfiguration()
-                .WriteTo.File("logs\\SurveillanceMonitorConfig.log")
+            Log.Logger = new LoggerConfiguration()                
                 .WriteTo.ColoredConsole()
+                .WriteTo.File(Path.Combine(Path.GetTempPath(), "SurveillanceMonitor\\logs\\service.log"))
                 .MinimumLevel.Debug()
-                .CreateLogger();
+                .CreateLogger();            
             current.Register(Log.Logger);
         }
 

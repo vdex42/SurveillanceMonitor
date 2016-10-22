@@ -41,7 +41,6 @@ namespace SurveillanceMonitor.Services
                                  var webServer = new MiniWebServer(_logger, new MiniSocketService());
                                  webServer.PageReceivedEvent += (sender, page) => {
                                      _alarmHandlers.AlarmActivated(_cameraSettings);
-                                     //_logger.Write(LogEventLevel.Warning, $"ALARM {page}");
                                  };
                                  webServer.Bind(8080);
 

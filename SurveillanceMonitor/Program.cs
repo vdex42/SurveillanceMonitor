@@ -1,6 +1,7 @@
 ﻿using SurveillanceMonitor.Infrastructure;
 using TinyIoC;
 using Topshelf;
+using Monitor = SurveillanceMonitor.Infrastructure.Monitor;
 
 namespace SurveillanceMonitor
 {
@@ -10,6 +11,8 @@ namespace SurveillanceMonitor
         {
             HostFactory.Run(x =>
                             {
+                                //Debugger.Launch();
+                                //Debugger.Break();
                                 IocSetup.Setup();
                                 x.Service<Monitor>(s =>
                                                    {
