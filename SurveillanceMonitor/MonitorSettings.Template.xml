@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <surveillanceMonitor
   VlcFolder="C:\Program Files (x86)\VideoLAN\VLC"
-  CallbackIp="192.168.0.102"
-  CallbackPort="8080">
+  CallbackIp="192.168.0.102"  >
   <cameras>
     <camera
       RtspSource="rtsp://admin:password@192.168.0.103:554/ISAPI/Streaming/channels/101"
       CameraHttpUrl="http://192.168.0.103:80"
       CameraUserName="admin"
-      CameraPassword="password">
+      CameraPassword="password"
+      CallbackPort="8080"
+      >
     </camera>
   </cameras>
   <alarmActions>

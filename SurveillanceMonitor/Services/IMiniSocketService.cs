@@ -1,4 +1,5 @@
 using System.IO;
+using System.Net;
 
 namespace SurveillanceMonitor.Services
 {
@@ -7,5 +8,6 @@ namespace SurveillanceMonitor.Services
         void Listen(int port, int backlog);
         Stream GetNextRequest();
         void Stop();
+        IPAddress IpAddress { get; }
     }
 }

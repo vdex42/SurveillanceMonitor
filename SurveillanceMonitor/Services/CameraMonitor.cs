@@ -30,7 +30,7 @@ namespace SurveillanceMonitor.Services
         public void Start(CancellationToken cancellationToken)
         {
             _logger.Information($"Start Monitoring {_cameraSettings.CameraHttpUrl}");
-            _cameraService.SetAlarmCallbackUrlAsync(_settings.CallbackIp, _settings.CallbackPort);
+            _cameraService.SetAlarmCallbackUrlAsync(_settings.CallbackIp, _cameraSettings.CallbackPort);
 
             Task.Run(async () =>
                      {
@@ -42,7 +42,7 @@ namespace SurveillanceMonitor.Services
                                  webServer.PageReceivedEvent += (sender, page) => {
                                      _alarmHandlers.AlarmActivated(_cameraSettings);
                                  };
-                                 webServer.Bind(8080);
+                                 webServer.Bind(_cameraSettings.CallbackPort);
 
                              }
                              catch (Exception e)

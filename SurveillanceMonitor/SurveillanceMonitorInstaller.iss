@@ -65,14 +65,14 @@ begin
   Memo.Text := '<?xml version="1.0" encoding="utf-8"?>'#13#10'' +
   '<surveillanceMonitor'#13#10'' +
   '  VlcFolder="' +  vlcFolder +'"'#13#10'' +
-  '  CallbackIp="192.168.0.102"'#13#10'' +
-  '  CallbackPort="8080">'#13#10'' +
+  '  CallbackIp="192.168.0.102">'#13#10'' +
   '  <cameras>'#13#10'' +
   '    <camera'#13#10'' +
   '      RtspSource="rtsp://admin:password@192.168.0.103:554/ISAPI/Streaming/channels/101"'#13#10'' +
   '      CameraHttpUrl="http://192.168.0.103:8040"'#13#10'' +
   '      CameraUserName="admin"'#13#10'' +
-  '      CameraPassword="password">'#13#10'' +
+  '      CameraPassword="password"'#13#10'' +
+  '      CallbackPort="8080">'#13#10'' +
   '    </camera>'#13#10'' +
   '  </cameras>'#13#10'' +
   '  <alarmActions>'#13#10'' +

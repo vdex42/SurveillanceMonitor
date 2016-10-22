@@ -28,7 +28,7 @@ namespace SurveillanceMonitor.Services
             _bound = true;
             while (true)
             {
-                _logger.Write(LogEventLevel.Information, $"Waiting for a connection... port:{port}");
+                _logger.Write(LogEventLevel.Information, $"Waiting for a connection... ip {_miniSocketService.IpAddress}  port:{port}");
                 // Program is suspended while waiting for an incoming connection.
 
                 try

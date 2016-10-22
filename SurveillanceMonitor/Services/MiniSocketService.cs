@@ -9,12 +9,13 @@ namespace SurveillanceMonitor.Services
     public class MiniSocketService : IMiniSocketService
     {
         private Socket _listener;
+        public IPAddress IpAddress { get; private set; }
 
         public void Listen(int port, int backlog)
         {
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddress = ipHostInfo.AddressList.First(a=>a.AddressFamily== AddressFamily.InterNetwork);
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, port);
+            IpAddress = ipHostInfo.AddressList.First(a=>a.AddressFamily== AddressFamily.InterNetwork);
+            IPEndPoint localEndPoint = new IPEndPoint(IpAddress, port);
             _listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             _listener.Bind(localEndPoint);
             _listener.Listen(backlog);

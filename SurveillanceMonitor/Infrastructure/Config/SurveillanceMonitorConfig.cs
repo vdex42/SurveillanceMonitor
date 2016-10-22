@@ -20,30 +20,26 @@ namespace SurveillanceMonitor.Infrastructure.Config
         public string VlcFolder { get; set; }
 
         [XmlAttribute]
-        public string CallbackIp { get; set; }
-
-        [XmlAttribute]
-        public ushort CallbackPort { get; set; }
+        public string CallbackIp { get; set; }        
 
         /// <remarks />
         [XmlType(AnonymousType = true)]
         public class SurveillanceMonitorCamera
         {
-            /// <remarks />
             [XmlAttribute]
             public string RtspSource { get; set; }
 
-            /// <remarks />
             [XmlAttribute]
             public string CameraHttpUrl { get; set; }
 
-            /// <remarks />
             [XmlAttribute]
             public string CameraUserName { get; set; }
 
-            /// <remarks />
             [XmlAttribute]
             public string CameraPassword { get; set; }
+
+            [XmlAttribute]
+            public ushort CallbackPort { get; set; }
 
             public int Id { get; set; }
         }
@@ -51,8 +47,6 @@ namespace SurveillanceMonitor.Infrastructure.Config
         [XmlType(AnonymousType = true)]
         public class SurveillanceMonitorAlarmAction
         {
-            //[XmlArray("settings")]
-            //[XmlArrayItem("setting", IsNullable = false)]
             [XmlElement("setting")]
             public SurveillanceMonitorAlarmActionSetting[] Settings { get; set; }
                         
@@ -62,11 +56,9 @@ namespace SurveillanceMonitor.Infrastructure.Config
             [XmlType(AnonymousType = true)]
             public class SurveillanceMonitorAlarmActionSetting
             {
-                /// <remarks />
                 [XmlAttribute]
                 public string Key { get; set; }
 
-                /// <remarks />
                 [XmlAttribute]
                 public string Value { get; set; }
             }
